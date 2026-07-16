@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DENPA - イベント運営管理アプリ</title>
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkRFTlBBIOOCpOODmeODs+ODiOmBi+WWtueuoeeQhiIsICJzaG9ydF9uYW1lIjogIkRFTlBBIiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNGRkY3RUEiLCAidGhlbWVfY29sb3IiOiAiI0YwMzQ3QSIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQUlBQUFEZHZ2dFFBQUFFbWtsRVFWUjRuTzNkUFZMY1FCQ0c0Y0ZGN2lMaUdpUStHcEVKY2NUUm5IQU5Jc29ua0lPbHhDSnBoWGErbnIvdTl3bkJCbFhOV3oyamxjcSttYVlwQWJsK3RMNEFqSTJBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJQ0VnU0FnSUVnS0NoSUFnSVNCSUNBZ1NBb0tFZ0NBaElFZ0lDQklDZ29TQUlDRWdTQWdJRWdLQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJQ0VnU0FnSUVnS0NoSUFnSVNCSUNBZ1NBb0tFZ0NBaElFZ0lDQklDZ29TQUlMbHRmUUZIdmIzYzdIejMvbkdxZGlVNE4weEErOVo1a1ZRZFRnSmFXeVJGVDRXNERXamh2Q2RpTWhRbG9ITnpUSlNraXhqUWpKSjAzTWFubE5MYnk4MytYUjR1Q1QyQkZoaElHWmhBR3hoSXh4SFFSV1IwQkFGOWc0ejJFZEFoTkhRSkFSM0ZLTnBFUU5jaG93VUN5a0ZETXdMS3hDZzZJU0FKRGQxTTAvQ2Z1alpmeGNpZlhIc0lhSzFKVWpFejhoblF1Wm94Qld6SWYwQ3pPaVZGYXloUVFMUFNKWVZxS0dKQXMzSWx4V2tvZEVBbmhUSUswaEFCZlNpUlVZU0dDT2dMODR6Y04wUkFHMnd6OHQwUWp6STIyQzU1OHcvS2kySUM3VEZjZTY5emlBbTB4M0RWdmM2aFlTYlF3OVA3NXRkZm4rOHEvSGFyNWZjM2g0WVBhS0ZjVHpTMHlWdEE1OHhqb3FFMXp3SE5ERXVpb1lVUWgraUhwM2VsdjNQM2o1T2J0VGNSWWdJdG1Bd2tmUlQ1Q0RIRUJGb3dHVWo2OHZ1NHNZOFkwQWtObVlnYlVMSVlSVDYySVVYb2dFN0VqTVNHUmg5Q0JQU0JodklRMENmREc3MDRDT2lMN08wczdCQWlvQTFOR2hvVUFXMnIzOUNnUTRpQUxtSU9IVUZBZXlvZnEwY2NRc004Qzl0VVo0RXpucDBwS1l3MXc4WU82RnpSbUdvMlJFQ05GU3JwMm9ZSWFIam1KZEhRbXVkRDlPdnpuZTFiclh4VXZlWTVvQlB6akk3TEhpUUQzWTc1RCtqRXFxRnJoOUJBbTFFZXoyZWdUU2JiMEZVNStqNEpSWmxBcy9yYjJSQWRaQXNYVUxKb2lOUDBMR0pBcVhwRGVVTm9pS04wMElCU2k3M01wYmdCSmJtaENodFovME1vZEVDcDRoenllcFNPSGxEU0d1STBUVUFwMVpwRExvY1FBWDNJYnFqMEVPcjhHRVJBa0JEUXB3cER5Tjh1UmtBRDZIa1hJNkF2dWowSmRZdUFsa3Jma1RuYnhRZ0lFZ0xha0RlRVl1NWlCRFNHYnMvUnQ2MHY0QnYvZnYxZWYvSG4zei8xcjhUUS9lUFViUkRYNmpTZ3pXN1czeTFYMHV2elhjd3Q2VnJkQmJTZnp1WWY3bWNnUFR5OVIzdk5xSzh6MEZYMWlIOExKam9LU09tZ1JFUFJaa21lWGdMU0MyQU9OZEZGUUZacjc3dWhQbS9jMmdka3Urck5HenA0NytibWdVYjdnREMweGdHVkdCaUdQNU56OUxlWVFKQVFFQ1F0QXlwMzRHMStsSTZEQ1FRSkFVSFMzY1BVM3BTN0VmUHhVUkFUQ0JJQ2dvU0FJR2taVUxrWHdmcDV4Y3c5SmhBa0JBUko0NEJLN0RYc1h6VXhnU0JwSDVEdHdHRDhWTlkrb0dTMzZ0UlRYeGNCSll1MXA1NG1lZ2tvYVFWUVR5c2RCWlJ5TzZDZWhqcjk3NTRPdmhGR09zMTFHdERNNWIvTzRVbnZBYUZ6ZloyQk1Cd0Nnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJQ0VnU0FnSUVnS0NoSUFnSVNCSUNBZ1NBb0tFZ0NBaElFZ0lDSkwvcFlDaFU3M1VrUzBBQUFBQVNVVk9SSzVDWUlJPSIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIn0sIHsic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQU5tMGxFUVZSNG5PM2RQWFlkVlJPR1VZbmxuT1hJMDNEQzBCeEJhQ0tHUnVKcEVMRVl3U1V3bno0dFNiNjZQOTJucStyZE94YjI2WUI2YnAyVzVNZlQ2ZlFBUUo2ZmpqNEFBTWNRQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJVDZjUFFCdU5kZmZ6eGU5ZldmdnB4Mk9nblFpd0RFZVRjWUNnRWhCSUNYM2l5RUtzQThBc0JGWGxkQkVxQTdBZUJHa2dEZENRQ2JlWjRFTVlENkJJQmR2TmdQOUFBS0VnQldzQnhBUVFMQWFrOHhVQUk0bGdCd0dHc0JIRXNBS01GYUFPc0pBTFVvQVN3akFCU2xCTEEzQWFBNkpZQ2RDQUJ0S0FGc1N3RG9Sd2xnRS81QkdCcjc2NC9IYS84NUJPQ0pBTkNlRE1CdFhBRXhoSHNodUpZTmdHa3NCSEFoQVdBbUdZQjN1UUppTXZkQ2NJWU5nQWdXQW5oTkFBZ2lBL0NjQUJCSEJ1QTdBU0NVRElBQUVFMEdTQ1lBSUFPRUVnRDRqd2FRUmdEZy82d0NSQkVBZUVrR0NDRUE4RFlaWUR3QmdITTBnTUVFQU41aEZXQXFBWUNMeUFEekNBQmNRUU9ZUkFEZ09sWUJ4aEFBdUlVR01JQUF3STJzQW5RbkFIQVhEYUF2QVlCN1dRVm9TZ0JnR3hwQU93SUFtN0VLMElzQXdNWTBnQzRFQUxhbkFiUWdBTEFMMTBIVTkzZzZuWTQrQTR1WVI0ZjQ5TVgvWWhRbEFQeEhIdmFqQWRRa0FKeWpDaHVTQWFvUkFLNmdCM2ZTQUVvUkFHNm5CemZRQU9vUUFMWWhCbGVSQVNvUUFMWW5CcGZRQUE0bkFPeExETTdRQUk0bEFDeWlCRy9TQUE0a0FLeW1CQzlvQUVjUkFBNmpCRTgwZ0VNSUFNZFRndTlrZ01VRWdDcGs0RUVEV0VzQUtDZThCQnJBTWdKQVVja1owQURXRUFDcXl5eUJCckNBQU5CRFlBWTBnTDBKQUoya1pVQUQySlVBMEU5VUJqU0EvUWdBWGVWa1FBUFlpUURRVzBnR05JQTlDQUFUSkdSQUE5aWNBRERIK0F4b0FOc1NBS2FablFFTllFTUN3RXlETTZBQmJPV25vdzhBdXhnOEpRZTNqY1ZzQUF3M2RWd09MaHpMQ0FBUlJtWkFBN2lUS3lBaWpKeVZJNnZHU2pZQXNzd2JtaVBieGhvMkFMTE1HNWZ6a3NZeU5nQkNEWnViODhMR0FqWUFRZzJibU1ONnhob0NRSzVQWDA3RE1nQlhjUVhVM3VmZi9yN2t5NzU5L2JqM1Nmb2E4L0ZaejdpS0FMUjNZUURPMElZSERTQ1NBTFIzZndCZWkwM0NqQXhvQUJjU2dQYjJDTUFMVVQzUUFISUlRSHNMQXZCY1FndzBnQkFDME43aUFEdzNPd1lETXFBQm5QZmg2QVBRMkZON1JwYmcwNWZUZ0FiQUdUYUE5ZzdjQUY2YlY0THVEYkFFY0lZQXRGY3FBRThtbFVBRG1Fb0EycXNaZ0NkalN0QTZBeHJBbTd3RFlGOWozaE40SmNBOGZoY1FpM3orN2UvaXk4cTcrbjZPbGk3ZUpBQXMxVDBER3NBazNnRzAxM3FlTnIwWDZqdE0rd2FNUGRnQU9GTFRoY0FZWlFZQjRIZ2RNOUMwQVgxM0YvYmdDcWk5ZHFQenZIYVhRaDFIYXRONnNUa2JBTFcwMndZNkR0T08wV0lQQWtCRnZUTFFzUUh3SUFCVXBnSDdzUVR3SUFBVTEyZ1YwQURhRVFBYTZKS0JkZzBnbkFEUVJvc005R3FBSlNDY0FOQ01CbXhMQTVJSkFQMjBXQVdnUGdHZ3E4b05zQVRRZ2dEUVdPVlZRQU9vVHdCb1R3UGdOZ0xBQkJwd1AwdEFJQUZnaUxMWFFScEFXUUxBS0JvQWx4TUFwdEdBZTFnQ29nZ0FBNVc5RG9KU0JJQ3hxalhBRWtBMUFzQmtHbkFiRFFnaEFBeW5BZkFqQXNCODFWNEp0R2lBSlNDQkFKQ2lWQU9nQWdFZ1NKMEdXQUtvUUFESW9nSHdSQUNJb3dHWHN3VE1KZ0FrcXRPQStqUmdNQUVnVkpFRzFGOENHRXdBeUtVQkY3SUVUQ1VBUk5NQWtna0E2WW8wb0RoTHdFaVBwNU9QSHNNWmNKZjQ5dlhqMFVlb1BtU3RLZk1JUUNoVmVFMEQzcVVCd3dnQUR3OTY4RCtITjBBQVdFa0FlQ2s4Qmhwd25nWk1JZ0Nja3hrRERUaERBQ1lSQUM2U1ZvSmpHMUE1QUE4YU1JZ0FjSjJjRW1qQWp3akFHSDRPZ090OCsvcng4QnVTQkpXSGJPVTRjUlViQUhlWnZSQllBbjZrY3ArNG5BQ3dnY0VaMElBM0NjQU1Bc0JtcG1iZ3dBYVVEY0NEQm93Z0FHeHNaQVkwNERVQkdNQkxZRGJtTGZHMnlzN1pzbVhpY2dMQUxvWmxZT1JhQTY2QTJOMlk2ZWtpNkxXeUN3cVhzQUd3dXpHcndKaVN3WGNDd0FyRGJvVFc4MEdiUGJnQ1lyWHVuNk9QS3BsYklEWm5BMkMxN3F2QVVRRXpaOW1jQUhBQURaaWs3R3JDdXdTQVkzZ3JjQU5MQU5zU0FJN1V0d0dXZ09jc0FVMEpBQWZUZ0t0WUF0aVFBSEE4MTBGd0NBR2dpbzROc0FROGNRdlVrUUJRaUFiQVNnSkFMUjBic0Y3TkpZQjJCSUJ5MmpYQUV2Q2RXNkIyQklDSzJqVmdQVXNBOXhNQWl1clZBRXNBSFFrQWRmVnF3SG9GbHdDM1FMMElBS1UxYW9BbGdIWUVnT28wQUhZaUFEVFFxQUdMdVFYaUhnSkFEMTBhWUFtZ0VRR2dqUzROV0t6Z0VrQVhBa0FuTFJwZ0NYQUwxSVVBMEV5TEJrQUxBa0EvOVJ1d2VBbHdDOFJ0QkFEWW5sdWdGZ1NBbGl3QkwxZ0N1SUVBMEZYOUJrQnhBa0JqeFJ2ZzI0RW9UZ0JnaUdxM1FGNEQxQ2NBOUZaOENZREtCSUQyS2pmQUxSQ1ZDUUFUVkc3QVNtNkJ1SW9Bd0w0c0FaUWxBQXhoQ1lCckNRRHNidVVTVU8wV2lNb0VnRGtzQVFWNURWQ1pBRENLQnNEbEJBQldjQXRFUVFMQU5KWUF1SkFBQUlRU0FBYXF1UVRFL2tDQTk4QmxDUUFNNURVQWx4QUFacXE1QkVBcEFnRHJ4TjRDVVpNQU1KWWxvQTZ2QVdvU0FKakphd0RlSlFCTVZuQUpjQXRFSFFJQUVFb0FHSzdnRWdCRmZEajZBRnpubjE5K3ZlVExmdjd6OTcxUHdzMCsvL2IzbWl4OStuTHk5cFV6QktDQkM0ZitqLzRUTWFDQ3YvNTQ5RjY2R2dHbzY0YTVmLzdQaVMzQnQ2OGZ2WHFGMXdTZ25LM20vcGsvT2JZRXdIT1BwNU9scklyOVJ2K2IwakpRYlFsWTh4cWcxRHNBVjBEVjJBQktXRHo2bi8rbGFSbEk0ejB3Wi9nMjBPTWRNdjJML08zQWdWd0JIYW5VOEUxWUJVcmRBaTM3QVlWU0c0QmJvRkpzQUljcE5mMGY2cDFudkZJMUlwTUFIS1BtdEsxNUttQW5yb0JXYXpGa0IxOEhsZnJjSFhnTDVBcW9GQnZBVWkybS8wT2Zjd0wzRUlCMWVrM1ZYcWNGYmlBQWkzU2NweDNQM0V1cCt5Z0NDUUJaL0hib1k5VjVHOEdEQUt6Ujk2TjAzNU1EN3hLQTNYV2ZvZDNQRC95SUFPeHJ4dlNjOFJUSmZQTWxieElBNG5nTkFOOEp3STRtZlhDZTlDeWwrRVlnRGlRQWU1azNNZWM5RVlRVEFJQlFBckNMcVIrV3B6NFhaQklBRW5rUERBOENzSWZaSDVOblB4MUVFUUJnS2I4Tm9nNEJBQWdsQUJ0THVDRkplTVo1L0RBd3J3a0FITXpQZ25FVUFRQUlKUUJieXJrYkdmQ2t2aE1VQkFBZ2xBQUFoQklBZ0ZBQ3NKa0IxK0pYU1h0ZW1FY0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVQ2Y1BRQjREQnB2dzNDTHdUbEJSc0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCS0F6Zno4NSs5SEgyR3B0T2VGZVFRQUlKUUFBSVFTQUlCUUFyQ2xuR3Z4bkNlRndRUUFJSlFBQUlRU2dJMGwzSTBrUENNa0VBQ0FVQUlBRUVvQXRqZjdobVQyMDBFVUFRQUlKUUM3bVBveGVlcHpRU1lCQUFnbEFIdVo5MkY1M2hOQk9BSFkwYVNKT2VsWmdPOEVBQ0NVQU94cnhnZm5HVThCdkNBQXUrcytQYnVmSC9nUkFWaWg3d3p0ZTNMZ1hRSUFFRW9BRnVuNFVicmptWUhMQ2NBNnZlWnByOU1DTnhDQXBicE0xUzduQk83eGVEcWRqajVEb245KytmWG9JN3pONkljY05vQmoxSnl6TlU4RjdFUUFEbE50MmxZN0Q3QTNWMERITy93NnlPaUhURGFBNHgwN2YwMS9pR1VES0dUeEttRDBRemdCS0dkQkJveCs0RUVBS3R1OEJPWSs4SndBTkhCbkNjeDk0RTBDME15Rk1URDBnWGNKQUVBbzN3WUtFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDRFV2MzRkUC9PQUY4RTBBQUFBQUVsRlRrU3VRbUNDIiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmcifV19">
+<meta name="theme-color" content="#F0347A">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="DENPA">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEVElEQVR4nO3dO1LcQBRG4R4XuYuIbZB4aUQmxBFLc8I2iCivQA5EianR/IPUD/Xte88X4tdU9dHtloTt0zRNCbjmR+8PALuIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIA9Jd7w/wjffXk/qhhyf+o/W2rMdxw7obcqlr4DjWLnKhlUKu4riwtEIleTzHsaCSPCHiWFDJLrHiWFDJFtGfc7y/nm7cLQcXPY4ZiVxFHF9I5AJxXCKRBXFcRx+JOG5ghBDHNyL3QRzfCztCiGOrgH2cpmnIR4QdlyrOQ9VR41g7MpcgffiJ49wBoUTow2cci6aVuO/DeRyLdpU4TiRKHLNGiXjtI1YcsxaJuOwjYhyz6on46yNuHLO6iTjrI3ocs4qJeOqDx+cpVV1RT0/ZiePTw9Pk6aKvwvq28vj8sf7i28t9uz+xyqXvo7Mh47jQopXyRBz04SGOcxVDoQ9vcSyqVBK8D7cH0sfnj+ywFuVLO/TNi9s4ZuWJDH3pF3Iex6wwkcI+xh0eIeKYlSQSs49AccyyEwm4v4SLY3Z8HyMOj6BxJPrYIG4cKXeLibO/hI5jdmQfYw0P4kjp2D4GQhyfyh+nbjTQ8CCOL3v7cL+5WH/xttb6Et/7xi5vpYfYlcaL41yjUHb1kT0G7PcxdhyL6pUc0AdxHK1iJfTh7UD69nJf65vBDrt/MctbHLOm34F8lfEZkMfbtnKh/Orf3pm/ncXn5FiUj5DteVle5jzO40hVTyEtWH4g5j+OWUkfYYdHlDjSUX14EiiOdMhdTMbwMLuzxIojFfQRcHiEiyO1nx9uTh4R48jWbnjY3FmCxmH55taOoHGk3D42Dg8fO0vcOKwxuLOEjqPp8HAgdByp5eHDwc4SPQ7cQBw5wyPIzkIchlg7k971/gBX/Pv1e/3Fn3//HP9JCj08TdbWexdDcVxtYv2jLSp5e7kPslPsYmVbuV1G3s9sKkJM/SdHxmLPv2TEjWYsnSdHyRioO0J427LWM47y1TWyxXhl5czh1d7npKbubrrFUeui7zg83J9J+8RRd0Vr/W4cOy6wrUAiDkgd4mhxSuC2pQUmByTigEQckPq/WzGlxd3suN8vyOSARByQOsTR4lU7r+9bYHJAIg5IfeKouwuwpzTSbXLUWlHKaIdtBVLPOMovesZGU50nR8nqUkZrVv55613v3MniGFbOHNvXmzIOY2VynHPzd2VHZzEOGGFlW4FBxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFA+g+WL4O1lTMmOgAAAABJRU5ErkJggg==">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF7EA;
+    --paper:#FFFFFF;
+    --border:#F0E4F2;
+    --border-strong:#E4CFE8;
+    --ink:#2B2140;
+    --ink-soft:#6E5F8A;
+    --ink-faint:#A99CC2;
+    --teal:#0E9E86;
+    --teal-bg:#DEF7F0;
+    --orange:#E88A00;
+    --orange-bg:#FFEDCC;
+    --blue:#2F7BEE;
+    --blue-bg:#E1EDFF;
+    --purple:#8348D6;
+    --purple-bg:#F0E6FB;
+    --pink:#F0347A;
+    --pink-bg:#FEE3ED;
+    --danger:#E8394C;
+    --danger-bg:#FDE3E6;
+    --radius:20px;
+    --shadow: 0 2px 0 rgba(43,33,64,0.05), 0 10px 24px rgba(131,72,214,0.10);
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(circle, #F0347A33 0 5px, transparent 6px),
+      radial-gradient(circle, #2F7BEE33 0 4px, transparent 5px),
+      radial-gradient(circle, #E88A0033 0 5px, transparent 6px),
+      radial-gradient(circle, #0E9E8633 0 4px, transparent 5px),
+      radial-gradient(circle, #8348D633 0 5px, transparent 6px);
+    background-repeat:no-repeat;
+    background-position: 6% 8%, 92% 14%, 12% 82%, 88% 78%, 50% 4%;
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:'Zen Maru Gothic','Noto Sans JP',sans-serif;
+    line-height:1.6;
+    padding:28px 20px 80px;
+  }
+  h1,h2,h3, .display{ font-family:'Kosugi Maru', sans-serif; font-weight:400; letter-spacing:.01em; }
+  #app{ max-width:1080px; margin:0 auto; position:relative; }
+
+  .topbar{
+    position:relative;
+    display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+    background:var(--paper); border:2.5px solid var(--ink); border-radius:24px;
+    padding:24px 28px; box-shadow:var(--shadow); margin-bottom:26px; flex-wrap:wrap;
+    overflow:visible;
+  }
+  .sync-banner{ background:var(--danger-bg); border:2px dashed var(--danger); color:var(--danger); border-radius:14px; padding:10px 16px; font-size:12.5px; font-weight:700; margin-bottom:18px; }
+  .sync-banner.info{ background:var(--blue-bg); border-color:var(--blue); color:var(--blue); }
+  .sync-banner.success{ background:var(--teal-bg); border-color:var(--teal); color:var(--teal); border-style:solid; }
+
+  .brandmark{ display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+  .brand-name{ font-family:'Kosugi Maru',sans-serif; font-size:20px; letter-spacing:.08em; color:var(--ink); }
+  .eyebrow{
+    display:inline-block; font-family:'Kosugi Maru',sans-serif; font-size:11px; letter-spacing:.14em;
+    color:#fff; background:var(--pink); font-weight:400; text-transform:uppercase;
+    padding:4px 12px; border-radius:20px; transform:rotate(-3deg); box-shadow:0 2px 0 rgba(43,33,64,0.15);
+  }
+  .topbar h1{ font-size:28px; margin:8px 0 2px; color:var(--ink); }
+  .topbar .sub{ font-size:13px; color:var(--ink-soft); font-weight:700; }
+  .btn{
+    appearance:none; border:2px solid var(--ink); background:var(--paper); color:var(--ink);
+    border-radius:999px; padding:9px 18px; font-size:13.5px; font-weight:700; cursor:pointer;
+    font-family:inherit; transition:transform .1s, box-shadow .1s; box-shadow:0 3px 0 var(--ink);
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn:active{ transform:translateY(2px); box-shadow:0 1px 0 var(--ink); }
+  .btn-primary{ background:var(--pink); color:#fff; border-color:var(--pink); box-shadow:0 3px 0 #B01D57; }
+  .btn-primary:active{ box-shadow:0 1px 0 #B01D57; }
+  .btn-danger{ color:var(--danger); border-color:var(--danger); box-shadow:0 3px 0 var(--danger); }
+  .btn-danger:hover{ background:var(--danger-bg); }
+  .btn-sm{ padding:5px 12px; font-size:12px; box-shadow:0 2px 0 var(--ink); }
+  .btn-sm:active{ box-shadow:0 0px 0 var(--ink); }
+  .btn-ghost{ border-color:transparent; background:transparent; box-shadow:none; }
+  .btn-ghost:hover{ background:#F3ECF8; }
+
+  .tabs{ display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+  .tab-btn{
+    font-family:'Kosugi Maru',sans-serif; border:2px solid var(--ink); background:var(--paper); color:var(--ink);
+    padding:10px 20px; border-radius:999px; font-size:14px; font-weight:400; cursor:pointer;
+    transition:transform .1s;
+  }
+  .tab-btn.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .tab-btn:hover{ transform:translateY(-2px) rotate(-1deg); }
+
+  .card{ position:relative; background:var(--paper); border:2px solid var(--ink); border-radius:var(--radius); padding:24px 26px; box-shadow:var(--shadow); margin-bottom:18px; }
+  .card:nth-of-type(4n+1){ border-top-color:var(--pink); border-top-width:5px; }
+  .card:nth-of-type(4n+2){ border-top-color:var(--blue); border-top-width:5px; }
+  .card:nth-of-type(4n+3){ border-top-color:var(--orange); border-top-width:5px; }
+  .card:nth-of-type(4n+4){ border-top-color:var(--teal); border-top-width:5px; }
+  .card h2{ font-size:19px; margin:0 0 4px; }
+  .card .desc{ font-size:12.5px; color:var(--ink-soft); margin:0 0 16px; font-weight:500; }
+
+  .grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:820px){ .grid-4{ grid-template-columns:repeat(2,1fr);} .grid-2{grid-template-columns:1fr;} }
+  @media(max-width:480px){
+    body{ padding:16px 10px 70px; }
+    .topbar{ padding:18px 18px; }
+    .modal{ padding:20px 18px; }
+    .card{ padding:18px 16px; }
+    .phase-track{ flex-wrap:wrap; }
+    .phase-chip{ min-width:calc(50% - 8px); }
+    .field input, .field select, .field textarea{ font-size:16px; }
+    .modal-actions{ flex-direction:column-reverse; }
+    .modal-actions .btn{ width:100%; text-align:center; }
+  }
+
+  .metric{ background:#FBF6FF; border:2px solid var(--border); border-radius:14px; padding:16px 18px; }
+  .metric:nth-of-type(4n+1){ background:var(--pink-bg); border-color:#F7B8CF; }
+  .metric:nth-of-type(4n+2){ background:var(--orange-bg); border-color:#F6CE8A; }
+  .metric:nth-of-type(4n+3){ background:var(--teal-bg); border-color:#9FDFCE; }
+  .metric:nth-of-type(4n+4){ background:var(--blue-bg); border-color:#AECBFB; }
+  .metric .label{ font-size:12px; color:var(--ink-soft); font-weight:700; }
+  .metric .value{ font-family:'Kosugi Maru',sans-serif; font-size:27px; font-weight:400; margin-top:4px; }
+  .metric .value.small{ font-size:20px; }
+  .metric .hint{ font-size:11.5px; color:var(--ink-faint); margin-top:3px; font-weight:500; }
+
+  .ring-wrap{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .ring-num{ font-family:'Kosugi Maru',sans-serif; font-size:34px; font-weight:400; fill:var(--ink); }
+  .ring-lbl{ font-size:11px; fill:var(--ink-soft); font-weight:700; }
+
+  .phase-track{ display:flex; gap:8px; margin-top:6px; }
+  .phase-chip{ flex:1; text-align:center; padding:9px 4px; border-radius:12px; font-size:12px; font-weight:700; }
+
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  .table-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 -4px; }
+  .table-scroll table{ min-width:480px; }
+  th{ text-align:left; font-size:11.5px; color:var(--ink-soft); font-weight:700; padding:6px 10px; border-bottom:2px dashed var(--border-strong); }
+  td{ padding:9px 10px; border-bottom:1.5px dashed var(--border); vertical-align:middle; }
+  tr:last-child td{ border-bottom:none; }
+  tr:hover td{ background:#FBF6FF; }
+  .num{ text-align:right; font-variant-numeric:tabular-nums; }
+  .row-actions{ white-space:nowrap; }
+
+  .badge{ display:inline-block; padding:4px 12px; border-radius:20px; font-size:11.5px; font-weight:700; transform:rotate(-1deg); }
+  .badge-teal{ background:var(--teal-bg); color:var(--teal); }
+  .badge-orange{ background:var(--orange-bg); color:var(--orange); }
+  .badge-blue{ background:var(--blue-bg); color:var(--blue); }
+  .badge-purple{ background:var(--purple-bg); color:var(--purple); }
+  .badge-gray{ background:#EDE6F2; color:var(--ink-soft); }
+  .badge-danger{ background:var(--danger-bg); color:var(--danger); }
+
+  .empty{ text-align:center; padding:30px 10px; color:var(--ink-faint); font-size:13.5px; font-weight:700; }
+
+  .modal-overlay{ position:absolute; inset:0; min-height:100%; background:rgba(43,33,64,.5); display:flex; align-items:flex-start; justify-content:center; z-index:50; padding:40px 20px; }
+  .modal{ background:var(--paper); border:2.5px solid var(--ink); border-radius:22px; padding:24px 26px; width:100%; max-width:440px; max-height:88vh; overflow-y:auto; box-shadow:0 12px 0 rgba(43,33,64,0.12); }
+  .modal h3{ font-size:19px; margin:0 0 16px; }
+  .field{ margin-bottom:13px; }
+  .field label{ display:block; font-size:12px; font-weight:700; color:var(--ink-soft); margin-bottom:5px; }
+  .field input, .field select, .field textarea{
+    width:100%; border:2px solid var(--border-strong); border-radius:12px; padding:8px 12px;
+    font-family:inherit; font-size:13.5px; color:var(--ink); background:#fff;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--pink); }
+  .field textarea{ resize:vertical; min-height:56px; }
+  .modal-actions{ display:flex; justify-content:flex-end; gap:8px; margin-top:18px; }
+
+  .toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:10px; flex-wrap:wrap; }
+  .toolbar .filters{ display:flex; gap:8px; flex-wrap:wrap; }
+  select.filter-select{ border:2px solid var(--border-strong); border-radius:999px; padding:7px 14px; font-family:inherit; font-size:13px; background:#fff; font-weight:700; }
+
+  .bar-track{ height:10px; background:#F0E9F5; border-radius:6px; overflow:hidden; border:1.5px solid var(--border-strong); }
+  .bar-fill{ height:100%; border-radius:6px; }
+
+  .note{ font-size:12px; color:var(--ink-soft); background:var(--purple-bg); border:1.5px dashed #C9A8ED; border-radius:14px; padding:12px 14px; margin-top:14px; font-weight:500; }
+  .note strong{ color:var(--purple); }
+
+  .stars{ color:var(--orange); letter-spacing:1px; }
+  .comment-item{ border-bottom:1.5px dashed var(--border-strong); padding:10px 2px; }
+  .comment-item:last-child{ border-bottom:none; }
+  .comment-item .meta{ font-size:11.5px; color:var(--ink-faint); margin-bottom:3px; font-weight:700; }
+
+  textarea#bulkSurvey{ width:100%; min-height:80px; border:2px solid var(--border-strong); border-radius:12px; padding:10px; font-family:inherit; font-size:13px; }
+
+  .cal-widget{ border:2px solid var(--border-strong); border-radius:14px; padding:10px 12px; user-select:none; }
+  .cal-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+  .cal-header .btn{ padding:3px 10px; }
+  .cal-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:2px; text-align:center; }
+  .cal-dow{ font-size:11px; color:var(--ink-soft); font-weight:700; padding:4px 0 6px; }
+  .cal-day{ position:relative; border:none; background:transparent; padding:8px 0; font-size:13px;
+    cursor:pointer; border-radius:8px; font-family:inherit; color:var(--ink); touch-action:none; }
+  .cal-day.other-month{ color:var(--ink-faint); opacity:.45; }
+  .cal-day.today{ font-weight:800; box-shadow:inset 0 0 0 1.5px var(--ink); }
+  .cal-day.in-range{ background:var(--purple-bg); border-radius:0; }
+  .cal-day.range-start{ background:var(--purple); color:#fff; border-radius:8px 0 0 8px; font-weight:700; }
+  .cal-day.range-end{ background:var(--purple); color:#fff; border-radius:0 8px 8px 0; font-weight:700; }
+  .cal-day.range-single{ background:var(--purple); color:#fff; border-radius:8px; font-weight:700; }
+  .cal-summary{ margin-top:8px; font-size:12.5px; color:var(--ink); font-weight:700; text-align:center; }
+  .cal-hint{ display:block; font-size:10.5px; color:var(--ink-faint); font-weight:500; margin-top:2px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <div>
+      <div class="brandmark">
+        <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+          <circle cx="6" cy="20" r="2.6" fill="#F0347A"/>
+          <path d="M11 20 A8 8 0 0 0 11 6" fill="none" stroke="#2F7BEE" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M16 20 A13 13 0 0 0 16 1" fill="none" stroke="#E88A00" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-name" id="teamNameDisplay">DENPA</span>
+      </div>
+      <div class="eyebrow">★ Event Ops ★</div>
+      <h1 id="eventNameDisplay">読み込み中...</h1>
+      <div class="sub" id="eventDateDisplay"></div>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button class="btn" data-action="refresh-data" title="スプレッドシートの最新データを取得">更新</button>
+      <button class="btn" data-action="edit-event-info">基本情報を編集</button>
+      <button class="btn" data-action="edit-access-code">アクセスコード</button>
+      <button class="btn" data-action="edit-api-url">API設定</button>
+    </div>
+  </div>
+  <div id="syncBanner"></div>
+
+  <div class="tabs" id="tabs"></div>
+  <div id="tabContent"></div>
+</div>
+<div id="modalRoot"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+(function(){
+  const API_URL_KEY = 'denpa-apps-script-url';
+  const ACCESS_CODE_KEY = 'denpa-access-code';
+  // このスプレッドシート連携用のURLをあらかじめ埋め込んでおくことで、
+  // Claudeの会話の外でこのHTMLファイルを直接開いた人も、
+  // 追加設定なしでそのまま使えるようにしています。
+  // URLを変更したい場合は、この値を書き換えるか、アプリの「API設定」から再設定してください。
+  const DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycbwOGMp3swafiXtbIVTqQJPn7A6-Omj57KgGm-FKZL2XGpJ01AtLk1LmA2rBBcsMl8UW/exec';
+  const PHASES = ['企画','準備','当日','事後'];
+  const PHASE_BADGE = {'企画':'badge-purple','準備':'badge-orange','当日':'badge-blue','事後':'badge-teal'};
+  const PHASE_COLOR = {'企画':'#8348D6','準備':'#E88A00','当日':'#2F7BEE','事後':'#0E9E86'};
+  const STATUS_LIST = ['未着手','進行中','完了'];
+  const STATUS_BADGE = {'未着手':'badge-gray','進行中':'badge-blue','完了':'badge-teal'};
+
+  let state = null;
+  let apiUrl = null;
+  let accessCode = '';
+  let apiError = null;
+  let toastMessage = null;
+  let toastTimer = null;
+
+  function showToast(text){
+    toastMessage = text;
+    renderShell();
+    if(toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>{ toastMessage = null; renderShell(); }, 2200);
+  }
+  let modalOpen = false;
+  let activeTab = 'dashboard';
+  let scheduleFilter = 'all';
+
+  function uid(){ return 'id_' + Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+  function esc(s){ return (s===undefined||s===null? '': String(s)).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function yen(n){ n = Number(n)||0; return '¥' + n.toLocaleString('ja-JP'); }
+  function fmtDate(d){
+    if(!d) return '未定';
+    let s = String(d);
+    const m = s.match(/^(\d{4}-\d{2}-\d{2})/);
+    if(m) s = m[1];
+    const dt = new Date(s+'T00:00:00');
+    if(isNaN(dt)) return '未定';
+    return dt.toLocaleDateString('ja-JP', {year:'numeric', month:'2-digit', day:'2-digit', weekday:'short'});
+  }
+  function todayStr(){ return new Date().toISOString().slice(0,10); }
+
+  function emptyState(){
+    return { eventInfo:{teamName:'DENPA', name:'', date:''}, members:[], schedule:[], budget:[], survey:[] };
+  }
+
+  function normalizeData(data){
+    const info = data && data.eventInfo ? data.eventInfo : {};
+    return {
+      eventInfo:{ teamName: info.teamName || 'DENPA', name: info.name || '', date: info.date || '' },
+      members: (data && data.members) || [],
+      schedule: (data && data.schedule) || [],
+      budget: ((data && data.budget) || []).map(b=>({...b, budgeted:Number(b.budgeted)||0, actual:Number(b.actual)||0})),
+      survey: ((data && data.survey) || []).map(r=>({...r, satisfaction:Number(r.satisfaction)||0}))
+    };
+  }
+
+  // window.storage (Claude内でのみ使える永続化) が使えない環境
+  // (このHTMLを単体でホスティング・保存した場合など) では、
+  // 代わりにブラウザのlocalStorageを使う。どちらもダメなら諦めて
+  // 都度入力してもらう。
+  async function storageGet(key){
+    try{
+      const res = await window.storage.get(key, true);
+      if(res && res.value) return res.value;
+      return null;
+    }catch(e){
+      try{ return window.localStorage.getItem(key); }catch(e2){ return null; }
+    }
+  }
+  async function storageSet(key, value){
+    try{ await window.storage.set(key, value, true); return; }
+    catch(e){ try{ window.localStorage.setItem(key, value); }catch(e2){ /* give up silently */ } }
+  }
+
+  async function getApiUrl(){
+    const stored = await storageGet(API_URL_KEY);
+    return stored || DEFAULT_API_URL || null;
+  }
+  async function setApiUrl(url){
+    apiUrl = url;
+    await storageSet(API_URL_KEY, url);
+  }
+  async function getAccessCode(){
+    return (await storageGet(ACCESS_CODE_KEY)) || '';
+  }
+  async function setAccessCode(code){
+    accessCode = code;
+    await storageSet(ACCESS_CODE_KEY, code);
+  }
+
+  async function apiGet(){
+    const sep = apiUrl.indexOf('?') > -1 ? '&' : '?';
+    const res = await fetch(apiUrl + sep + 'token=' + encodeURIComponent(accessCode || ''));
+    if(!res.ok) throw new Error('API GET failed: ' + res.status);
+    const json = await res.json();
+    if(!json.ok){
+      if(json.error === 'unauthorized') throw new Error('unauthorized');
+      throw new Error(json.error || 'API returned an error');
+    }
+    return json.data;
+  }
+  async function apiPost(entity, op, payload){
+    const res = await fetch(apiUrl, {
+      method:'POST',
+      headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+      body: JSON.stringify({ entity, op, payload, token: accessCode || '' })
+    });
+    if(!res.ok) throw new Error('API POST failed: ' + res.status);
+    const json = await res.json();
+    if(!json.ok){
+      if(json.error === 'unauthorized') throw new Error('unauthorized');
+      throw new Error(json.error || 'API returned an error');
+    }
+    // the Apps Script backend already returns the full, freshly-read dataset
+    // alongside the write result, so we can apply it directly instead of
+    // making a second round trip with a separate GET request.
+    if(json.data){ state = normalizeData(json.data); }
+    return json;
+  }
+
+  async function refreshFromApi(){
+    const data = await apiGet();
+    state = normalizeData(data);
+    apiError = null;
+  }
+
+  async function runApiAction(fn, successMessage){
+    let ok = true;
+    try{
+      await fn();
+      apiError = null;
+      if(successMessage){ showToast(successMessage); }
+    }catch(err){
+      console.error('api action failed', err);
+      if(err.message === 'unauthorized'){
+        apiError = 'アクセスコードが違うか未設定です。右上の「アクセスコード」から正しいコードを入力してください。';
+        alert('アクセスコードが正しくないため、データを取得・保存できませんでした。\n右上の「アクセスコード」ボタンから正しいコードを入力してください。');
+      } else {
+        apiError = 'スプレッドシートとの通信に失敗しました。ネットワーク状況や、Apps ScriptのURL設定をご確認ください。';
+        alert('保存に失敗しました。内容は消えていないので、もう一度お試しください。\n(' + err.message + ')');
+      }
+      ok = false;
+    }
+    renderShell(); renderTab();
+    return ok;
+  }
+
+  function memberName(id){ const m = state.members.find(x=>x.id===id); return m ? m.name : '未定'; }
+
+  // ---------- MODAL ----------
+  function closeModal(){ document.getElementById('modalRoot').innerHTML = ''; modalOpen = false; }
+
+  // ---------- DATE RANGE CALENDAR PICKER ----------
+  // Renders a month calendar where the user can drag across days to pick a
+  // range, and drag the start/end edge of an existing range to stretch or
+  // shrink it, instead of using two separate native date inputs.
+  function createDateRangePicker(container, initialStart, initialEnd, onChange){
+    let start = initialStart || todayStr();
+    let end = (initialEnd && initialEnd >= start) ? initialEnd : start;
+    let viewDate = new Date(start+'T00:00:00');
+    let dragMode = null; // null | 'new' | 'start' | 'end'
+    let anchorDate = null;
+
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function toStr(y,m,d){ return y+'-'+pad(m+1)+'-'+pad(d); }
+
+    function dayCellHtml(ds, dayNum, otherMonth, todays){
+      let cls = 'cal-day';
+      if(otherMonth) cls += ' other-month';
+      if(ds === todays) cls += ' today';
+      if(ds >= start && ds <= end){
+        if(start===end) cls += ' range-single';
+        else if(ds===start) cls += ' range-start';
+        else if(ds===end) cls += ' range-end';
+        else cls += ' in-range';
+      }
+      return '<button type="button" class="'+cls+'" data-date="'+ds+'">'+dayNum+'</button>';
+    }
+
+    function render(){
+      const y = viewDate.getFullYear(), m = viewDate.getMonth();
+      const first = new Date(y,m,1);
+      const startWeekday = first.getDay();
+      const daysInMonth = new Date(y,m+1,0).getDate();
+      const daysInPrevMonth = new Date(y,m,0).getDate();
+      const todays = todayStr();
+
+      let cells = '';
+      for(let i=0;i<startWeekday;i++){
+        const d = daysInPrevMonth - startWeekday + 1 + i;
+        const pm = m===0? 11: m-1, py = m===0? y-1: y;
+        cells += dayCellHtml(toStr(py,pm,d), d, true, todays);
+      }
+      for(let d=1; d<=daysInMonth; d++){
+        cells += dayCellHtml(toStr(y,m,d), d, false, todays);
+      }
+      const totalCells = startWeekday + daysInMonth;
+      const trailing = (7 - (totalCells % 7)) % 7;
+      for(let i=1;i<=trailing;i++){
+        const nm = m===11?0:m+1, ny = m===11?y+1:y;
+        cells += dayCellHtml(toStr(ny,nm,i), i, true, todays);
+      }
+
+      container.innerHTML =
+        '<div class="cal-widget">'+
+          '<div class="cal-header">'+
+            '<button type="button" class="btn btn-sm cal-nav" data-nav="-1">‹</button>'+
+            '<div style="font-weight:700;">'+y+'年 '+(m+1)+'月</div>'+
+            '<button type="button" class="btn btn-sm cal-nav" data-nav="1">›</button>'+
+          '</div>'+
+          '<div class="cal-grid">'+
+            ['日','月','火','水','木','金','土'].map(d=>'<div class="cal-dow">'+d+'</div>').join('')+
+            cells+
+          '</div>'+
+          '<div class="cal-summary">'+(start===end ? fmtDate(start) : fmtDate(start)+' 〜 '+fmtDate(end))+
+            '<span class="cal-hint">日をドラッグして期間を選択・端をつまんで伸縮</span></div>'+
+        '</div>';
+
+      container.querySelectorAll('.cal-nav').forEach(btn=>{
+        btn.addEventListener('click', function(){ viewDate.setMonth(viewDate.getMonth()+Number(btn.dataset.nav)); render(); });
+      });
+      container.querySelectorAll('.cal-day').forEach(cell=>{
+        cell.addEventListener('mousedown', onDown);
+        cell.addEventListener('mouseenter', onEnter);
+        cell.addEventListener('touchstart', onTouchStart, {passive:false});
+        cell.addEventListener('touchmove', onTouchMove, {passive:false});
+      });
+    }
+
+    function applyDrag(ds){
+      if(dragMode==='new'){
+        if(ds < anchorDate){ start=ds; end=anchorDate; } else { start=anchorDate; end=ds; }
+      } else if(dragMode==='start'){
+        if(ds>end){ start=end; end=ds; dragMode='end'; } else { start=ds; }
+      } else if(dragMode==='end'){
+        if(ds<start){ end=start; start=ds; dragMode='start'; } else { end=ds; }
+      }
+      render();
+    }
+
+    function onDown(e){
+      e.preventDefault();
+      const ds = e.currentTarget.dataset.date;
+      if(start!==end && ds===start){ dragMode='start'; }
+      else if(start!==end && ds===end){ dragMode='end'; }
+      else { dragMode='new'; anchorDate=ds; start=ds; end=ds; }
+      render();
+      document.addEventListener('mouseup', onUp, {once:true});
+    }
+    function onEnter(e){
+      if(!dragMode) return;
+      applyDrag(e.currentTarget.dataset.date);
+    }
+    function onUp(){
+      if(!dragMode) return;
+      dragMode=null; anchorDate=null;
+      onChange(start, end);
+    }
+    function cellFromTouch(e){
+      const t = e.touches[0];
+      const el = document.elementFromPoint(t.clientX, t.clientY);
+      return el && el.classList && el.classList.contains('cal-day') ? el : null;
+    }
+    function onTouchStart(e){
+      e.preventDefault();
+      onDown({preventDefault(){}, currentTarget:e.currentTarget});
+    }
+    function onTouchMove(e){
+      e.preventDefault();
+      if(!dragMode) return;
+      const cell = cellFromTouch(e);
+      if(cell) applyDrag(cell.dataset.date);
+    }
+    document.addEventListener('touchend', function(){ if(dragMode) onUp(); });
+
+    render();
+    onChange(start, end);
+  }
+
+  function openModal(opts){
+    modalOpen = true;
+    // opts: {title, fields:[{key,label,type,options?,required?}], values:{}, onSubmit(values)}
+    const root = document.getElementById('modalRoot');
+    const fieldsHtml = opts.fields.map(f=>{
+      const val = opts.values[f.key] !== undefined ? opts.values[f.key] : '';
+      let input = '';
+      if(f.type === 'select'){
+        input = '<select data-field="'+f.key+'">' + f.options.map(o=>
+          '<option value="'+esc(o)+'"'+(String(val)===String(o)?' selected':'')+'>'+esc(o)+'</option>'
+        ).join('') + '</select>';
+      } else if(f.type === 'select-member'){
+        const opts2 = ['<option value="">未定</option>'].concat(state.members.map(m=>
+          '<option value="'+m.id+'"'+(val===m.id?' selected':'')+'>'+esc(m.name)+'</option>'
+        ));
+        input = '<select data-field="'+f.key+'">' + opts2.join('') + '</select>';
+      } else if(f.type === 'textarea'){
+        input = '<textarea data-field="'+f.key+'">'+esc(val)+'</textarea>';
+      } else if(f.type === 'date-range'){
+        const startVal = opts.values[f.startKey] || todayStr();
+        const endVal = opts.values[f.endKey] || startVal;
+        input = '<div class="cal-mount" data-start-key="'+f.startKey+'" data-end-key="'+f.endKey+'"></div>'+
+          '<input type="hidden" data-field="'+f.startKey+'" value="'+esc(startVal)+'">'+
+          '<input type="hidden" data-field="'+f.endKey+'" value="'+esc(endVal)+'">';
+      } else {
+        input = '<input data-field="'+f.key+'" type="'+f.type+'" value="'+esc(val)+'"'+(f.required?' required':'')+(f.min!==undefined?' min="'+f.min+'"':'')+'>';
+      }
+      return '<div class="field"><label>'+esc(f.label)+'</label>'+input+'</div>';
+    }).join('');
+
+    root.innerHTML =
+      '<div class="modal-overlay">'+
+        '<div class="modal" role="dialog" aria-modal="true">'+
+          '<h3>'+esc(opts.title)+'</h3>'+
+          '<form id="modalForm">'+fieldsHtml+
+            '<div class="modal-actions">'+
+              '<button type="button" class="btn" id="modalCancelBtn">キャンセル</button>'+
+              '<button type="submit" class="btn btn-primary">保存</button>'+
+            '</div>'+
+          '</form>'+
+        '</div>'+
+      '</div>';
+
+    const overlayEl = root.querySelector('.modal-overlay');
+    const modalEl = root.querySelector('.modal');
+    const formEl = document.getElementById('modalForm');
+    const cancelBtn = document.getElementById('modalCancelBtn');
+
+    modalEl.addEventListener('click', function(e){ e.stopPropagation(); });
+    overlayEl.addEventListener('click', function(e){ if(e.target === overlayEl){ closeModal(); } });
+    cancelBtn.addEventListener('click', function(){ closeModal(); });
+
+    root.querySelectorAll('.cal-mount').forEach(mount=>{
+      const startKey = mount.dataset.startKey;
+      const endKey = mount.dataset.endKey;
+      const startInput = formEl.querySelector('[data-field="'+startKey+'"]');
+      const endInput = formEl.querySelector('[data-field="'+endKey+'"]');
+      createDateRangePicker(mount, startInput.value, endInput.value, function(start, end){
+        startInput.value = start;
+        endInput.value = end;
+      });
+    });
+
+    formEl.addEventListener('submit', async function(e){
+      e.preventDefault();
+      try{
+        const values = {};
+        opts.fields.forEach(f=>{
+          if(f.type === 'date-range'){
+            const startEl = formEl.querySelector('[data-field="'+f.startKey+'"]');
+            const endEl = formEl.querySelector('[data-field="'+f.endKey+'"]');
+            values[f.startKey] = startEl ? startEl.value : '';
+            values[f.endKey] = endEl ? endEl.value : '';
+          } else {
+            const el = formEl.querySelector('[data-field="'+f.key+'"]');
+            values[f.key] = el ? el.value : '';
+          }
+        });
+        await opts.onSubmit(values);
+      }catch(err){
+        console.error('modal submit failed', err);
+        alert('保存中にエラーが発生しました。もう一度お試しください。');
+      }
+    });
+  }
+
+  // ---------- RENDER: SHELL ----------
+  const TAB_LIST = [
+    {key:'dashboard', label:'ダッシュボード'},
+    {key:'members', label:'メンバー'},
+    {key:'schedule', label:'スケジュール'},
+    {key:'budget', label:'予算'},
+    {key:'survey', label:'アンケート'}
+  ];
+
+  function renderShell(){
+    document.getElementById('teamNameDisplay').textContent = state.eventInfo.teamName || 'DENPA';
+    document.getElementById('eventNameDisplay').textContent = state.eventInfo.name || '（イベント名未設定）';
+    const dLeft = daysLeft();
+    document.getElementById('eventDateDisplay').textContent =
+      '開催日: ' + fmtDate(state.eventInfo.date) + (dLeft!==null ? '（あと ' + dLeft + ' 日）' : '');
+
+    const banner = document.getElementById('syncBanner');
+    if(toastMessage){
+      banner.innerHTML = '<div class="sync-banner success">✓ '+esc(toastMessage)+'</div>';
+    } else if(!apiUrl){
+      banner.innerHTML = '<div class="sync-banner info">スプレッドシートと連携するAPI URLが未設定です。右上の「API設定」から、Apps Scriptのウェブアプリ URLを登録してください。</div>';
+    } else if(apiError){
+      banner.innerHTML = '<div class="sync-banner">'+esc(apiError)+'</div>';
+    } else {
+      banner.innerHTML = '';
+    }
+
+    document.getElementById('tabs').innerHTML = TAB_LIST.map(t=>
+      '<button class="tab-btn'+(activeTab===t.key?' active':'')+'" data-action="switch-tab" data-tab="'+t.key+'">'+t.label+'</button>'
+    ).join('');
+  }
+
+  function daysLeft(){
+    if(!state.eventInfo.date) return null;
+    let s = String(state.eventInfo.date);
+    const m = s.match(/^(\d{4}-\d{2}-\d{2})/);
+    if(m) s = m[1];
+    const evt = new Date(s+'T00:00:00');
+    const today = new Date(todayStr()+'T00:00:00');
+    const diff = Math.round((evt - today) / 86400000);
+    return isNaN(diff) ? null : diff;
+  }
+
+  function renderTab(){
+    const el = document.getElementById('tabContent');
+    if(activeTab==='dashboard') el.innerHTML = renderDashboard();
+    else if(activeTab==='members') el.innerHTML = renderMembers();
+    else if(activeTab==='schedule') el.innerHTML = renderSchedule();
+    else if(activeTab==='budget') el.innerHTML = renderBudget();
+    else if(activeTab==='survey') el.innerHTML = renderSurvey();
+  }
+
+  function render(){ renderShell(); renderTab(); }
+
+  // ---------- DASHBOARD ----------
+  // ---------- WORD REPORT EXPORT ----------
+  function buildReportHtml(){
+    const info = state.eventInfo;
+    const total = state.schedule.length;
+    const done = state.schedule.filter(s=>s.status==='完了').length;
+    const totalBudgeted = state.budget.reduce((s,b)=>s+(Number(b.budgeted)||0),0);
+    const totalActual = state.budget.reduce((s,b)=>s+(Number(b.actual)||0),0);
+    const surveyCount = state.survey.length;
+    const avgSat = surveyCount ? (state.survey.reduce((s,r)=>s+(Number(r.satisfaction)||0),0)/surveyCount) : 0;
+    const dist = [1,2,3,4,5].map(v=> state.survey.filter(r=>Number(r.satisfaction)===v).length);
+
+    const th = 'style="border:1px solid #999;padding:5px 8px;background:#F0E6FB;font-weight:bold;text-align:left;"';
+    const td = 'style="border:1px solid #999;padding:5px 8px;"';
+    const tdNum = 'style="border:1px solid #999;padding:5px 8px;text-align:right;"';
+    const h2 = 'style="font-size:16pt;color:#2B2140;border-bottom:2px solid #8348D6;padding-bottom:4px;margin-top:28px;"';
+
+    const membersRows = state.members.map(m=>
+      '<tr><td '+td+'>'+esc(m.name)+'</td><td '+td+'>'+esc(m.role||'-')+'</td><td '+td+'>'+esc(m.note||'-')+'</td></tr>'
+    ).join('') || '<tr><td '+td+' colspan="3">登録されているメンバーはいません。</td></tr>';
+
+    const scheduleSorted = state.schedule.slice().sort((a,b)=>a.date.localeCompare(b.date));
+    const scheduleRows = scheduleSorted.map(s=>
+      '<tr><td '+td+'>'+esc(s.title)+'</td><td '+td+'>'+esc(s.phase)+'</td><td '+td+'>'+scheduleDateLabel(s)+'</td>'+
+      '<td '+td+'>'+esc(memberName(s.assigneeId))+'</td><td '+td+'>'+esc(s.status)+'</td></tr>'
+    ).join('') || '<tr><td '+td+' colspan="5">登録されているタスクはありません。</td></tr>';
+
+    const budgetRows = state.budget.map(b=>{
+      const diff = (Number(b.actual)||0) - (Number(b.budgeted)||0);
+      return '<tr><td '+td+'>'+esc(b.category)+'</td><td '+tdNum+'>'+yen(b.budgeted)+'</td>'+
+        '<td '+tdNum+'>'+yen(b.actual)+'</td><td '+tdNum+'>'+(diff>0?'+':'')+yen(diff)+'</td></tr>';
+    }).join('') || '<tr><td '+td+' colspan="4">登録されている予算項目はありません。</td></tr>';
+
+    const distRows = [5,4,3,2,1].map(v=>
+      '<tr><td '+td+'>'+v+'</td><td '+tdNum+'>'+dist[v-1]+'件</td></tr>'
+    ).join('');
+
+    const commentsHtml = state.survey.length
+      ? state.survey.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(r=>
+          '<p style="margin:4px 0;">・（満足度 '+esc(r.satisfaction)+'／'+fmtDate(r.date)+'）'+(r.comment?esc(r.comment):'コメントなし')+'</p>'
+        ).join('')
+      : '<p>コメントはありません。</p>';
+
+    return ''+
+      '<h1 style="font-size:22pt;color:#2B2140;">'+esc(info.name || 'イベント')+' 実施報告書</h1>'+
+      '<p style="font-size:11pt;color:#555;">プロジェクトチーム: '+esc(info.teamName || 'DENPA')+' ／ 開催日: '+fmtDate(info.date)+' ／ 作成日: '+fmtDate(todayStr())+'</p>'+
+
+      '<h2 '+h2+'>1. メンバー一覧</h2>'+
+      '<table style="border-collapse:collapse;width:100%;"><tr><th '+th+'>氏名</th><th '+th+'>役割</th><th '+th+'>メモ</th></tr>'+membersRows+'</table>'+
+
+      '<h2 '+h2+'>2. スケジュール（進捗 '+done+' / '+total+' 件完了）</h2>'+
+      '<table style="border-collapse:collapse;width:100%;"><tr><th '+th+'>項目</th><th '+th+'>フェーズ</th><th '+th+'>期間</th><th '+th+'>担当</th><th '+th+'>状況</th></tr>'+scheduleRows+'</table>'+
+
+      '<h2 '+h2+'>3. 予算（予算合計 '+yen(totalBudgeted)+' ／ 実績合計 '+yen(totalActual)+'）</h2>'+
+      '<table style="border-collapse:collapse;width:100%;"><tr><th '+th+'>費目</th><th '+th+'>予算額</th><th '+th+'>実績額</th><th '+th+'>差異</th></tr>'+budgetRows+'</table>'+
+
+      '<h2 '+h2+'>4. アンケート結果（回答数 '+surveyCount+'件／平均満足度 '+(surveyCount?avgSat.toFixed(2):'-')+' / 5）</h2>'+
+      '<table style="border-collapse:collapse;width:220px;margin-bottom:14px;"><tr><th '+th+'>満足度</th><th '+th+'>件数</th></tr>'+distRows+'</table>'+
+      '<h3 style="font-size:12pt;color:#2B2140;">主なコメント</h3>'+
+      commentsHtml;
+  }
+
+  function exportWordReport(){
+    const bodyHtml = buildReportHtml();
+    const doc = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">'+
+      '<head><meta charset="utf-8"><title>report</title>'+
+      '<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]-->'+
+      '<style>body{font-family:"Yu Gothic","Meiryo",sans-serif;font-size:10.5pt;color:#222;}</style>'+
+      '</head><body>'+bodyHtml+'</body></html>';
+    const blob = new Blob(['\ufeff', doc], {type:'application/msword'});
+    const url = URL.createObjectURL(blob);
+    const filename = (state.eventInfo.name || 'イベント') + '_報告書_' + todayStr() + '.doc';
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url), 3000);
+  }
+
+  function renderDashboard(){
+    const total = state.schedule.length;
+    const done = state.schedule.filter(s=>s.status==='完了').length;
+    const pct = total ? Math.round(done/total*100) : 0;
+    const dLeft = daysLeft();
+
+    const totalBudget = state.budget.reduce((s,b)=>s+(Number(b.budgeted)||0),0);
+    const totalActual = state.budget.reduce((s,b)=>s+(Number(b.actual)||0),0);
+    const budgetPct = totalBudget ? Math.round(totalActual/totalBudget*100) : 0;
+
+    const surveyCount = state.survey.length;
+    const avgSat = surveyCount ? (state.survey.reduce((s,r)=>s+(Number(r.satisfaction)||0),0)/surveyCount) : 0;
+
+    const upcoming = state.schedule.filter(s=>s.status!=='完了').sort((a,b)=>a.date.localeCompare(b.date)).slice(0,4);
+
+    const r = 42, circ = 2*Math.PI*r;
+    const timelineStart = state.schedule.length ? state.schedule.map(s=>s.date).sort()[0] : todayStr();
+    let ringPct = 0;
+    if(state.eventInfo.date){
+      const start = new Date(timelineStart+'T00:00:00').getTime();
+      const end = new Date(state.eventInfo.date+'T00:00:00').getTime();
+      const now = new Date(todayStr()+'T00:00:00').getTime();
+      ringPct = end>start ? Math.min(100, Math.max(0, Math.round((now-start)/(end-start)*100))) : 0;
+    }
+    const dash = circ * ringPct/100;
+
+    return ''+
+    '<div class="card">'+
+      '<h2>本番までの進捗</h2>'+
+      '<p class="desc">開催日までの残り日数と、準備の進み具合をひと目で確認できます。</p>'+
+      '<div class="ring-wrap">'+
+        '<svg width="110" height="110" viewBox="0 0 110 110">'+
+          '<circle cx="55" cy="55" r="'+r+'" fill="none" stroke="#F0E9F5" stroke-width="10"/>'+
+          '<circle cx="55" cy="55" r="'+r+'" fill="none" stroke="#F0347A" stroke-width="10" stroke-linecap="round" '+
+            'stroke-dasharray="'+dash.toFixed(1)+' '+circ.toFixed(1)+'" transform="rotate(-90 55 55)"/>'+
+          '<text x="55" y="52" text-anchor="middle" class="ring-num">'+(dLeft===null?'-':dLeft)+'</text>'+
+          '<text x="55" y="70" text-anchor="middle" class="ring-lbl">日前</text>'+
+        '</svg>'+
+        '<div class="phase-track" style="flex:1; min-width:220px;">'+
+          PHASES.map(p=>{
+            const cnt = state.schedule.filter(s=>s.phase===p).length;
+            const cdone = state.schedule.filter(s=>s.phase===p && s.status==='完了').length;
+            return '<div class="phase-chip" style="background:'+PHASE_COLOR[p]+'22; color:'+PHASE_COLOR[p]+';">'+p+'<br><span style="font-size:15px; font-weight:700;">'+cdone+'/'+cnt+'</span></div>';
+          }).join('')+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="grid-4">'+
+      '<div class="metric"><div class="label">タスク進捗</div><div class="value">'+pct+'%</div>'+
+        '<div class="bar-track" style="margin-top:8px;"><div class="bar-fill" style="width:'+pct+'%; background:var(--blue);"></div></div>'+
+        '<div class="hint">'+done+' / '+total+' 件完了</div></div>'+
+      '<div class="metric"><div class="label">予算執行率</div><div class="value">'+budgetPct+'%</div>'+
+        '<div class="bar-track" style="margin-top:8px;"><div class="bar-fill" style="width:'+Math.min(100,budgetPct)+'%; background:'+(budgetPct>100?'var(--danger)':'var(--orange)')+';"></div></div>'+
+        '<div class="hint">'+yen(totalActual)+' / '+yen(totalBudget)+'</div></div>'+
+      '<div class="metric"><div class="label">メンバー数</div><div class="value">'+state.members.length+'名</div>'+
+        '<div class="hint">担当割り当て済み '+state.schedule.filter(s=>s.assigneeId).length+' 件</div></div>'+
+      '<div class="metric"><div class="label">アンケート回答</div><div class="value">'+surveyCount+'件</div>'+
+        '<div class="hint">平均満足度 '+(surveyCount? avgSat.toFixed(1):'-')+' / 5</div></div>'+
+    '</div>'+
+
+    '<div class="card" style="margin-top:16px;">'+
+      '<h2>直近の未完了タスク</h2>'+
+      (upcoming.length ? '<div class="table-scroll"><table><thead><tr><th>項目</th><th>フェーズ</th><th>期日</th><th>担当</th><th>状況</th></tr></thead><tbody>'+
+        upcoming.map(s=>'<tr><td>'+esc(s.title)+'</td><td><span class="badge '+PHASE_BADGE[s.phase]+'">'+s.phase+'</span></td>'+
+          '<td>'+scheduleDateLabel(s)+'</td><td>'+esc(memberName(s.assigneeId))+'</td>'+
+          '<td><span class="badge '+STATUS_BADGE[s.status]+'">'+s.status+'</span></td></tr>').join('')+
+        '</tbody></table></div>' : '<div class="empty">未完了のタスクはありません。</div>')+
+    '</div>'+
+
+    '<div class="card">'+
+      '<h2>報告書の作成</h2>'+
+      '<p class="desc">メンバー・スケジュール・予算・アンケートの内容をまとめて、Word（.doc）形式の報告書としてダウンロードできます。</p>'+
+      '<button class="btn btn-primary" data-action="export-report">📄 報告書をダウンロード</button>'+
+    '</div>';
+  }
+
+  // ---------- MEMBERS ----------
+  function renderMembers(){
+    const rows = state.members.map(m=>
+      '<tr>'+
+        '<td>'+esc(m.name)+'</td>'+
+        '<td>'+esc(m.role||'-')+'</td>'+
+        '<td>'+esc(m.note||'-')+'</td>'+
+        '<td class="row-actions">'+
+          '<button class="btn btn-sm" data-action="edit-member" data-id="'+m.id+'">編集</button> '+
+          '<button class="btn btn-sm btn-danger" data-action="delete-member" data-id="'+m.id+'">削除</button>'+
+        '</td>'+
+      '</tr>'
+    ).join('');
+
+    return ''+
+    '<div class="card">'+
+      '<div class="toolbar"><div><h2 style="margin-bottom:2px;">メンバー一覧</h2><div class="desc" style="margin:0;">運営メンバーとスケジュール上の担当割り当てを管理します。</div></div>'+
+      '<button class="btn btn-primary" data-action="add-member">＋ メンバーを追加</button></div>'+
+      (state.members.length ? '<div class="table-scroll"><table><thead><tr><th>氏名</th><th>役割</th><th>メモ</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+        : '<div class="empty">メンバーが登録されていません。「＋ メンバーを追加」から登録してください。</div>')+
+      '<div class="note"><strong>デスクネッツ連携について：</strong> このアプリからデスクネッツのスケジュールへ自動連携することはできません（外部システムへの直接アクセス権限がないため）。</div>'+
+    '</div>';
+  }
+
+  function memberFields(){
+    return [
+      {key:'name', label:'氏名', type:'text'},
+      {key:'role', label:'役割・担当領域', type:'text'},
+      {key:'note', label:'メモ', type:'text'}
+    ];
+  }
+
+  // ---------- SCHEDULE ----------
+  function scheduleDateLabel(s){
+    if(s.endDate && s.endDate !== s.date){
+      return fmtDate(s.date) + ' 〜 ' + fmtDate(s.endDate);
+    }
+    return fmtDate(s.date);
+  }
+
+  function renderSchedule(){
+    let items = state.schedule.slice().sort((a,b)=>a.date.localeCompare(b.date));
+    if(scheduleFilter!=='all') items = items.filter(s=>s.phase===scheduleFilter);
+
+    const rows = items.map(s=>
+      '<tr>'+
+        '<td>'+esc(s.title)+(s.memo?'<div style="font-size:11.5px; color:var(--ink-faint); margin-top:2px;">'+esc(s.memo)+'</div>':'')+'</td>'+
+        '<td><span class="badge '+PHASE_BADGE[s.phase]+'">'+s.phase+'</span></td>'+
+        '<td>'+scheduleDateLabel(s)+'</td>'+
+        '<td>'+esc(memberName(s.assigneeId))+'</td>'+
+        '<td><span class="badge '+STATUS_BADGE[s.status]+'">'+s.status+'</span></td>'+
+        '<td class="row-actions">'+
+          '<button class="btn btn-sm" data-action="edit-schedule" data-id="'+s.id+'">編集</button> '+
+          '<button class="btn btn-sm btn-danger" data-action="delete-schedule" data-id="'+s.id+'">削除</button>'+
+        '</td>'+
+      '</tr>'
+    ).join('');
+
+    return ''+
+    '<div class="card">'+
+      '<div class="toolbar">'+
+        '<div><h2 style="margin-bottom:2px;">スケジュール管理</h2><div class="desc" style="margin:0;">打合せから開催当日、事後対応までのタスクを一元管理します。複数日にわたる場合は終了日も設定できます。</div></div>'+
+        '<button class="btn btn-primary" data-action="add-schedule">＋ タスクを追加</button>'+
+      '</div>'+
+      '<div class="toolbar"><div class="filters">'+
+        '<select class="filter-select" data-action="filter-schedule">'+
+          '<option value="all"'+(scheduleFilter==='all'?' selected':'')+'>すべてのフェーズ</option>'+
+          PHASES.map(p=>'<option value="'+p+'"'+(scheduleFilter===p?' selected':'')+'>'+p+'</option>').join('')+
+        '</select>'+
+      '</div></div>'+
+      (items.length ? '<div class="table-scroll"><table><thead><tr><th>項目</th><th>フェーズ</th><th>期間</th><th>担当</th><th>状況</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+        : '<div class="empty">該当するタスクがありません。</div>')+
+    '</div>';
+  }
+
+  function scheduleFields(){
+    return [
+      {key:'title', label:'項目名', type:'text'},
+      {key:'phase', label:'フェーズ', type:'select', options:PHASES},
+      {key:'dateRange', label:'期間', type:'date-range', startKey:'date', endKey:'endDate'},
+      {key:'assigneeId', label:'担当者', type:'select-member'},
+      {key:'status', label:'状況', type:'select', options:STATUS_LIST},
+      {key:'memo', label:'メモ', type:'text'}
+    ];
+  }
+
+  // ---------- BUDGET ----------
+  function renderBudget(){
+    const rows = state.budget.map(b=>{
+      const diff = (Number(b.actual)||0) - (Number(b.budgeted)||0);
+      const over = diff > 0;
+      return '<tr>'+
+        '<td>'+esc(b.category)+(b.memo?'<div style="font-size:11.5px; color:var(--ink-faint); margin-top:2px;">'+esc(b.memo)+'</div>':'')+'</td>'+
+        '<td class="num">'+yen(b.budgeted)+'</td>'+
+        '<td class="num">'+yen(b.actual)+'</td>'+
+        '<td class="num"><span class="badge '+(over?'badge-danger':'badge-teal')+'">'+(over?'+':'')+yen(diff)+'</span></td>'+
+        '<td class="row-actions">'+
+          '<button class="btn btn-sm" data-action="edit-budget" data-id="'+b.id+'">編集</button> '+
+          '<button class="btn btn-sm btn-danger" data-action="delete-budget" data-id="'+b.id+'">削除</button>'+
+        '</td>'+
+      '</tr>';
+    }).join('');
+
+    const totalBudgeted = state.budget.reduce((s,b)=>s+(Number(b.budgeted)||0),0);
+    const totalActual = state.budget.reduce((s,b)=>s+(Number(b.actual)||0),0);
+    const totalDiff = totalActual - totalBudgeted;
+
+    return ''+
+    '<div class="card">'+
+      '<div class="toolbar">'+
+        '<div><h2 style="margin-bottom:2px;">予算管理</h2><div class="desc" style="margin:0;">費目ごとの予算額と実績額を入力し、差異を自動計算します。</div></div>'+
+        '<button class="btn btn-primary" data-action="add-budget">＋ 費目を追加</button>'+
+      '</div>'+
+      (state.budget.length ? '<div class="table-scroll"><table><thead><tr><th>費目</th><th class="num">予算額</th><th class="num">実績額</th><th class="num">差異</th><th></th></tr></thead><tbody>'+rows+
+        '<tr><td style="font-weight:700;">合計</td>'+
+        '<td class="num" style="font-weight:700;">'+yen(totalBudgeted)+'</td>'+
+        '<td class="num" style="font-weight:700;">'+yen(totalActual)+'</td>'+
+        '<td class="num" style="font-weight:700;"><span class="badge '+(totalDiff>0?'badge-danger':'badge-teal')+'">'+(totalDiff>0?'+':'')+yen(totalDiff)+'</span></td><td></td></tr>'+
+        '</tbody></table></div>' : '<div class="empty">予算項目が登録されていません。</div>')+
+    '</div>';
+  }
+
+  function budgetFields(){
+    return [
+      {key:'category', label:'費目', type:'text'},
+      {key:'budgeted', label:'予算額（円）', type:'number', min:0},
+      {key:'actual', label:'実績額（円）', type:'number', min:0},
+      {key:'memo', label:'メモ', type:'text'}
+    ];
+  }
+
+  // ---------- SURVEY ----------
+  function renderSurvey(){
+    const n = state.survey.length;
+    const avg = n ? state.survey.reduce((s,r)=>s+(Number(r.satisfaction)||0),0)/n : 0;
+    const dist = [1,2,3,4,5].map(v=> state.survey.filter(r=>Number(r.satisfaction)===v).length);
+    const maxDist = Math.max(1, ...dist);
+
+    const comments = state.survey.slice().sort((a,b)=> (b.date||'').localeCompare(a.date||'')).map(r=>
+      '<div class="comment-item">'+
+        '<div class="meta">'+fmtDate(r.date)+' ・ <span class="stars">'+'★'.repeat(Number(r.satisfaction)||0)+'☆'.repeat(5-(Number(r.satisfaction)||0))+'</span></div>'+
+        '<div>'+(r.comment ? esc(r.comment) : '<span style="color:var(--ink-faint);">コメントなし</span>')+'</div>'+
+      '</div>'
+    ).join('');
+
+    return ''+
+    '<div class="card">'+
+      '<h2>アンケート結果ダッシュボード</h2>'+
+      '<p class="desc">回答を入力・貼り付けすると、満足度の分布とコメントを自動集計します。</p>'+
+      '<div class="grid-2">'+
+        '<div class="metric"><div class="label">平均満足度</div><div class="value">'+(n? avg.toFixed(2):'-')+' <span style="font-size:14px; color:var(--ink-soft); font-family:inherit;">/ 5</span></div><div class="hint">回答数 '+n+' 件</div></div>'+
+        '<div class="metric">'+
+          '<div class="label">満足度の分布</div>'+
+          [5,4,3,2,1].map(v=>{
+            const c = dist[v-1];
+            const w = Math.round(c/maxDist*100);
+            return '<div style="display:flex; align-items:center; gap:8px; margin-top:6px;">'+
+              '<span style="font-size:11.5px; width:14px; color:var(--ink-soft);">'+v+'</span>'+
+              '<div class="bar-track" style="flex:1;"><div class="bar-fill" style="width:'+w+'%; background:var(--orange);"></div></div>'+
+              '<span style="font-size:11.5px; width:22px; text-align:right; color:var(--ink-soft);">'+c+'</span>'+
+            '</div>';
+          }).join('')+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="card">'+
+      '<div class="toolbar"><h2 style="margin-bottom:2px;">回答の追加</h2></div>'+
+      '<div class="grid-2" style="align-items:start;">'+
+        '<div><div class="field"><label>1件ずつ入力</label></div>'+
+          '<button class="btn btn-primary" data-action="add-survey">＋ 回答を1件追加</button>'+
+        '</div>'+
+        '<div>'+
+          '<div class="field"><label>まとめて貼り付け（1行＝1件、形式: 満足度,コメント）</label>'+
+            '<textarea id="bulkSurvey" placeholder="5,内容が分かりやすかった&#10;4,時間が長かった"></textarea>'+
+          '</div>'+
+          '<button class="btn" data-action="bulk-survey">まとめて取り込む</button>'+
+        '</div>'+
+      '</div>'+
+      '<div style="margin-top:16px; padding-top:16px; border-top:1.5px dashed var(--border-strong);">'+
+        '<div class="field"><label>CSVファイルから取り込む（1列目: 満足度[1-5]、2列目: コメント、3列目: 回答日（任意）／1行目に見出しがあってもOK）</label>'+
+          '<input type="file" id="surveyCsvInput" accept=".csv,text/csv">'+
+        '</div>'+
+        '<button class="btn" data-action="import-survey-csv">CSVを取り込む</button>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="card">'+
+      '<h2>コメント一覧</h2>'+
+      (n ? comments : '<div class="empty">まだ回答がありません。</div>')+
+    '</div>';
+  }
+
+  function surveyFields(){
+    return [
+      {key:'satisfaction', label:'総合満足度', type:'select', options:['5','4','3','2','1']},
+      {key:'comment', label:'コメント', type:'textarea'},
+      {key:'date', label:'回答日', type:'date'}
+    ];
+  }
+
+  // ---------- ACTIONS ----------
+  async function handleAction(action, target){
+    if(action==='switch-tab'){ activeTab = target.dataset.tab; render(); return; }
+    if(action==='filter-schedule'){ scheduleFilter = target.value; renderTab(); return; }
+    if(action==='close-modal'){ closeModal(); return; }
+
+    if(action==='refresh-data'){
+      await runApiAction(async ()=>{ await refreshFromApi(); }, '最新のデータを取得しました');
+      return;
+    }
+
+    if(action==='edit-api-url'){
+      openModal({
+        title:'API設定（Apps ScriptのウェブアプリURL）',
+        fields:[{key:'apiUrl', label:'ウェブアプリのURL', type:'text', required:true}],
+        values:{ apiUrl: apiUrl || '' },
+        onSubmit: async (v)=>{
+          const url = v.apiUrl.trim();
+          await setApiUrl(url);
+          const ok = await runApiAction(async ()=>{ await refreshFromApi(); }, '接続できました');
+          if(ok){ closeModal(); render(); }
+        }
+      });
+      return;
+    }
+
+    if(action==='edit-access-code'){
+      openModal({
+        title:'アクセスコード',
+        fields:[{key:'accessCode', label:'合言葉（Apps Script側の ACCESS_CODE と同じもの）', type:'text'}],
+        values:{ accessCode: accessCode || '' },
+        onSubmit: async (v)=>{
+          await setAccessCode(v.accessCode.trim());
+          const ok = await runApiAction(async ()=>{ await refreshFromApi(); }, '接続できました');
+          if(ok){ closeModal(); render(); }
+        }
+      });
+      return;
+    }
+
+    if(action==='edit-event-info'){
+      openModal({
+        title:'イベント基本情報の編集',
+        fields:[{key:'teamName', label:'プロジェクトチーム名', type:'text'},{key:'name', label:'イベント名', type:'text'},{key:'date', label:'開催日', type:'date'}],
+        values: state.eventInfo,
+        onSubmit: async (v)=>{
+          const ok = await runApiAction(async ()=>{
+            await apiPost('eventInfo', 'set', {teamName:v.teamName, name:v.name, date:v.date});
+          }, '保存しました');
+          if(ok){ closeModal(); render(); }
+        }
+      });
+      return;
+    }
+
+    if(action==='add-member'){
+      openModal({ title:'メンバーを追加', fields:memberFields(), values:{},
+        onSubmit: async (v)=>{
+          const ok = await runApiAction(async ()=>{ await apiPost('members','add', {id:uid(), ...v}); }, '保存しました');
+          if(ok){ closeModal(); renderTab(); }
+        } });
+      return;
+    }
+    if(action==='edit-member'){
+      const m = state.members.find(x=>x.id===target.dataset.id);
+      openModal({ title:'メンバーを編集', fields:memberFields(), values:m,
+        onSubmit: async (v)=>{
+          const ok = await runApiAction(async ()=>{ await apiPost('members','update', {id:m.id, ...v}); }, '保存しました');
+          if(ok){ closeModal(); renderTab(); }
+        } });
+      return;
+    }
+    if(action==='delete-member'){
+      if(confirm('このメンバーを削除しますか？')){
+        await runApiAction(async ()=>{ await apiPost('members','delete', {id:target.dataset.id}); }, '削除しました');
+      }
+      return;
+    }
+
+    if(action==='add-schedule'){
+      openModal({ title:'タスクを追加', fields:scheduleFields(), values:{phase:'企画', status:'未着手', date:todayStr()},
+        onSubmit: async (v)=>{
+          const ok = await runApiAction(async ()=>{ await apiPost('schedule','add', {id:uid(), ...v}); }, '保存しました');
+          if(ok){ closeModal(); render(); }
+        } });
+      return;
+    }
+    if(action==='edit-schedule'){
+      const s = state.schedule.find(x=>x.id===target.dataset.id);
+      openModal({ title:'タスクを編集', fields:scheduleFields(), values:s,
+        onSubmit: async (v)=>{
+          const ok = await runApiAction(async ()=>{ await apiPost('schedule','update', {id:s.id, ...v}); }, '保存しました');
+          if(ok){ closeModal(); render(); }
+        } });
+      return;
+    }
+    if(action==='delete-schedule'){
+      if(confirm('このタスクを削除しますか？')){
+        await runApiAction(async ()=>{ await apiPost('schedule','delete', {id:target.dataset.id}); }, '削除しました');
+      }
+      return;
+    }
+
+    if(action==='add-budget'){
+      openModal({ title:'費目を追加', fields:budgetFields(), values:{budgeted:0, actual:0},
+        onSubmit: async (v)=>{
+          const payload = {id:uid(), category:v.category, budgeted:Number(v.budgeted)||0, actual:Number(v.actual)||0, memo:v.memo};
+          const ok = await runApiAction(async ()=>{ await apiPost('budget','add', payload); }, '保存しました');
+          if(ok){ closeModal(); render(); }
+        } });
+      return;
+    }
+    if(action==='edit-budget'){
+      const b = state.budget.find(x=>x.id===target.dataset.id);
+      openModal({ title:'費目を編集', fields:budgetFields(), values:b,
+        onSubmit: async (v)=>{
+          const payload = {id:b.id, category:v.category, budgeted:Number(v.budgeted)||0, actual:Number(v.actual)||0, memo:v.memo};
+          const ok = await runApiAction(async ()=>{ await apiPost('budget','update', payload); }, '保存しました');
+          if(ok){ closeModal(); render(); }
+        } });
+      return;
+    }
+    if(action==='delete-budget'){
+      if(confirm('この費目を削除しますか？')){
+        await runApiAction(async ()=>{ await apiPost('budget','delete', {id:target.dataset.id}); }, '削除しました');
+      }
+      return;
+    }
+
+    if(action==='add-survey'){
+      openModal({ title:'アンケート回答を追加', fields:surveyFields(), values:{satisfaction:'5', date:todayStr()},
+        onSubmit: async (v)=>{
+          const payload = {id:uid(), satisfaction:Number(v.satisfaction), comment:v.comment, date:v.date||todayStr()};
+          const ok = await runApiAction(async ()=>{ await apiPost('survey','add', payload); }, '保存しました');
+          if(ok){ closeModal(); renderTab(); }
+        } });
+      return;
+    }
+    if(action==='bulk-survey'){
+      const raw = document.getElementById('bulkSurvey').value;
+      const lines = raw.split('\n').map(l=>l.trim()).filter(Boolean);
+      if(!lines.length) return;
+      const items = [];
+      lines.forEach(line=>{
+        const idx = line.indexOf(',');
+        let sat, comment;
+        if(idx===-1){ sat = line.trim(); comment=''; } else { sat = line.slice(0,idx).trim(); comment = line.slice(idx+1).trim(); }
+        sat = Math.max(1, Math.min(5, Math.round(Number(sat))||0));
+        if(sat>=1 && sat<=5){ items.push({id:uid(), satisfaction:sat, comment:comment, date:todayStr()}); }
+      });
+      if(!items.length) return;
+      const ok = await runApiAction(async ()=>{ await apiPost('survey','bulkAdd', items); }, '取り込みました');
+      if(ok){ document.getElementById('bulkSurvey').value = ''; }
+      renderTab();
+      return;
+    }
+    if(action==='import-survey-csv'){
+      const fileInput = document.getElementById('surveyCsvInput');
+      const file = fileInput && fileInput.files && fileInput.files[0];
+      if(!file){ alert('CSVファイルを選択してください。'); return; }
+      let items;
+      try{
+        const text = await readCsvFileAsText(file);
+        items = parseSurveyCsvRows(text);
+      }catch(err){
+        console.error('csv read/parse failed', err);
+        alert('CSVの読み込みに失敗しました。\n(' + err.message + ')');
+        return;
+      }
+      if(!items.length){ alert('取り込める行が見つかりませんでした。1列目が1〜5の数字になっているかご確認ください。'); return; }
+      const ok = await runApiAction(async ()=>{ await apiPost('survey','bulkAdd', items); }, items.length + '件取り込みました');
+      if(ok){ fileInput.value = ''; }
+      renderTab();
+      return;
+    }
+    if(action==='export-report'){
+      try{ exportWordReport(); }
+      catch(err){ console.error('report export failed', err); alert('報告書の作成に失敗しました。\n(' + err.message + ')'); }
+      return;
+    }
+  }
+
+  // Excel(日本語版)で保存したCSVはShift_JIS(Windows-31J)であることが多いため、
+  // UTF-8で読んで文字化けしていそうな場合はShift_JISとして読み直す。
+  async function readCsvFileAsText(file){
+    const buf = await file.arrayBuffer();
+    let text = new TextDecoder('utf-8').decode(buf);
+    const brokenCount = (text.match(/\uFFFD/g) || []).length;
+    if(brokenCount > 2){
+      try{ text = new TextDecoder('shift-jis').decode(buf); }catch(e){ /* keep utf-8 result */ }
+    }
+    return text;
+  }
+
+  function parseSurveyCsvRows(text){
+    const parsed = Papa.parse(text, { skipEmptyLines:true });
+    const items = [];
+    (parsed.data || []).forEach(row=>{
+      if(!row || !row.length) return;
+      const first = String(row[0]).trim();
+      if(!/^\d+(\.\d+)?$/.test(first)) return; // skip header row / non-numeric rows
+      const sat = Math.max(1, Math.min(5, Math.round(Number(first)) || 0));
+      const comment = row[1] !== undefined ? String(row[1]).trim() : '';
+      let date = todayStr();
+      if(row[2]){
+        const m = String(row[2]).trim().match(/^(\d{4}-\d{2}-\d{2})/);
+        if(m) date = m[1];
+      }
+      items.push({id:uid(), satisfaction:sat, comment:comment, date:date});
+    });
+    return items;
+  }
+
+  document.addEventListener('click', function(e){
+    const target = e.target.closest('[data-action]');
+    if(!target) return;
+    handleAction(target.dataset.action, target);
+  });
+  document.addEventListener('change', function(e){
+    const target = e.target.closest('[data-action]');
+    if(!target) return;
+    handleAction(target.dataset.action, target);
+  });
+
+  (async function init(){
+    state = emptyState();
+    apiUrl = await getApiUrl();
+    accessCode = await getAccessCode();
+    if(apiUrl){
+      await runApiAction(async ()=>{ await refreshFromApi(); });
+    } else {
+      render();
+    }
+    // near-real-time sync: poll for changes made by teammates, unless a modal is currently open
+    setInterval(async ()=>{
+      if(modalOpen || !apiUrl) return;
+      try{ await refreshFromApi(); renderShell(); renderTab(); }catch(e){ /* ignore transient errors */ }
+    }, 20000);
+  })();
+})();
+</script>
+</body>
+</html>
