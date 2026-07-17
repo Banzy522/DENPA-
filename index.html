@@ -274,6 +274,7 @@
   let modalOpen = false;
   let activeTab = 'dashboard';
   let scheduleFilter = 'all';
+  let selectedBoothId = null;
 
   function uid(){ return 'id_' + Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
   function esc(s){ return (s===undefined||s===null? '': String(s)).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -290,7 +291,7 @@
   function todayStr(){ return new Date().toISOString().slice(0,10); }
 
   function emptyState(){
-    return { eventInfo:{teamName:'DENPA', name:'', date:''}, members:[], schedule:[], budget:[], survey:[] };
+    return { eventInfo:{teamName:'DENPA', name:'', date:''}, members:[], schedule:[], budget:[], survey:[], booths:[], boothSchedule:[] };
   }
 
   function normalizeData(data){
@@ -300,7 +301,9 @@
       members: (data && data.members) || [],
       schedule: (data && data.schedule) || [],
       budget: ((data && data.budget) || []).map(b=>({...b, budgeted:Number(b.budgeted)||0, actual:Number(b.actual)||0})),
-      survey: ((data && data.survey) || []).map(r=>({...r, satisfaction:Number(r.satisfaction)||0}))
+      survey: ((data && data.survey) || []).map(r=>({...r, satisfaction:Number(r.satisfaction)||0})),
+      booths: (data && data.booths) || [],
+      boothSchedule: (data && data.boothSchedule) || []
     };
   }
 
@@ -618,6 +621,7 @@
     {key:'dashboard', label:'ダッシュボード'},
     {key:'members', label:'メンバー'},
     {key:'schedule', label:'スケジュール'},
+    {key:'booths', label:'ブース'},
     {key:'budget', label:'予算'},
     {key:'survey', label:'アンケート'}
   ];
@@ -661,6 +665,7 @@
     if(activeTab==='dashboard') el.innerHTML = renderDashboard();
     else if(activeTab==='members') el.innerHTML = renderMembers();
     else if(activeTab==='schedule') el.innerHTML = renderSchedule();
+    else if(activeTab==='booths') el.innerHTML = renderBooths();
     else if(activeTab==='budget') el.innerHTML = renderBudget();
     else if(activeTab==='survey') el.innerHTML = renderSurvey();
   }
@@ -908,16 +913,99 @@
     ];
   }
 
+  // ---------- BOOTHS ----------
+  function renderBooths(){
+    // keep the selection valid; default to the first booth if none chosen yet
+    if(selectedBoothId && !state.booths.find(b=>b.id===selectedBoothId)){ selectedBoothId = null; }
+    if(!selectedBoothId && state.booths.length){ selectedBoothId = state.booths[0].id; }
+
+    const boothRows = state.booths.map(b=>
+      '<tr><td>'+esc(b.name)+'</td><td>'+esc(b.memo||'-')+'</td>'+
+      '<td class="row-actions">'+
+        '<button class="btn btn-sm" data-action="edit-booth" data-id="'+b.id+'">編集</button> '+
+        '<button class="btn btn-sm btn-danger" data-action="delete-booth" data-id="'+b.id+'">削除</button>'+
+      '</td></tr>'
+    ).join('');
+
+    let boothDetail = '';
+    if(!state.booths.length){
+      boothDetail = '<div class="empty">まだブースが登録されていません。上の「＋ ブースを追加」からまず登録してください。</div>';
+    } else {
+      const items = state.boothSchedule.filter(s=>s.boothId===selectedBoothId).slice().sort((a,b)=>a.date.localeCompare(b.date));
+      const rows = items.map(s=>
+        '<tr>'+
+          '<td>'+esc(s.title)+(s.memo?'<div style="font-size:11.5px; color:var(--ink-faint); margin-top:2px;">'+esc(s.memo)+'</div>':'')+'</td>'+
+          '<td>'+scheduleDateLabel(s)+'</td>'+
+          '<td>'+esc(memberName(s.assigneeId))+'</td>'+
+          '<td><span class="badge '+STATUS_BADGE[s.status]+'">'+s.status+'</span></td>'+
+          '<td class="row-actions">'+
+            '<button class="btn btn-sm" data-action="edit-booth-schedule" data-id="'+s.id+'">編集</button> '+
+            '<button class="btn btn-sm btn-danger" data-action="delete-booth-schedule" data-id="'+s.id+'">削除</button>'+
+          '</td>'+
+        '</tr>'
+      ).join('');
+
+      boothDetail =
+        '<div class="tabs" style="margin:0 0 14px;">'+
+          state.booths.map(b=>
+            '<button class="tab-btn'+(selectedBoothId===b.id?' active':'')+'" data-action="switch-booth" data-id="'+b.id+'">'+esc(b.name)+'</button>'
+          ).join('')+
+        '</div>'+
+        '<div class="toolbar"><h2 style="margin-bottom:2px; font-size:16px;">'+esc((state.booths.find(b=>b.id===selectedBoothId)||{}).name||'')+' のスケジュール</h2>'+
+          '<button class="btn btn-primary" data-action="add-booth-schedule">＋ タスクを追加</button>'+
+        '</div>'+
+        (items.length ? '<div class="table-scroll"><table><thead><tr><th>項目</th><th>期間</th><th>担当</th><th>状況</th><th></th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+          : '<div class="empty">このブースのタスクはまだありません。</div>');
+    }
+
+    return ''+
+    '<div class="card">'+
+      '<div class="toolbar"><div><h2 style="margin-bottom:2px;">ブース管理</h2><div class="desc" style="margin:0;">出展ブースを登録し、ブースごとにスケジュールを分けて管理できます。</div></div>'+
+      '<button class="btn btn-primary" data-action="add-booth">＋ ブースを追加</button></div>'+
+      (state.booths.length ? '<div class="table-scroll"><table><thead><tr><th>ブース名</th><th>メモ</th><th></th></tr></thead><tbody>'+boothRows+'</tbody></table></div>'
+        : '<div class="empty">まだブースが登録されていません。</div>')+
+    '</div>'+
+
+    '<div class="card">'+
+      boothDetail+
+    '</div>';
+  }
+
+  function boothFields(){
+    return [
+      {key:'name', label:'ブース名', type:'text'},
+      {key:'memo', label:'メモ', type:'text'}
+    ];
+  }
+
+  function boothScheduleFields(){
+    return [
+      {key:'title', label:'項目名', type:'text'},
+      {key:'dateRange', label:'期間', type:'date-range', startKey:'date', endKey:'endDate'},
+      {key:'assigneeId', label:'担当者', type:'select-member'},
+      {key:'status', label:'状況', type:'select', options:STATUS_LIST},
+      {key:'memo', label:'メモ', type:'text'}
+    ];
+  }
+
   // ---------- BUDGET ----------
   function renderBudget(){
+    const maxAmount = Math.max(1, ...state.budget.map(b=>Math.max(Number(b.budgeted)||0, Number(b.actual)||0)));
     const rows = state.budget.map(b=>{
-      const diff = (Number(b.actual)||0) - (Number(b.budgeted)||0);
+      const budgeted = Number(b.budgeted)||0, actual = Number(b.actual)||0;
+      const diff = actual - budgeted;
       const over = diff > 0;
+      const budgetedPct = Math.round(budgeted/maxAmount*100);
+      const actualPct = Math.round(actual/maxAmount*100);
       return '<tr>'+
         '<td>'+esc(b.category)+(b.memo?'<div style="font-size:11.5px; color:var(--ink-faint); margin-top:2px;">'+esc(b.memo)+'</div>':'')+'</td>'+
         '<td class="num">'+yen(b.budgeted)+'</td>'+
         '<td class="num">'+yen(b.actual)+'</td>'+
         '<td class="num"><span class="badge '+(over?'badge-danger':'badge-teal')+'">'+(over?'+':'')+yen(diff)+'</span></td>'+
+        '<td style="min-width:110px;">'+
+          '<div class="bar-track" style="height:6px;"><div class="bar-fill" style="width:'+budgetedPct+'%; background:var(--ink-faint);"></div></div>'+
+          '<div class="bar-track" style="height:6px; margin-top:3px;"><div class="bar-fill" style="width:'+actualPct+'%; background:'+(over?'var(--danger)':'var(--orange)')+';"></div></div>'+
+        '</td>'+
         '<td class="row-actions">'+
           '<button class="btn btn-sm" data-action="edit-budget" data-id="'+b.id+'">編集</button> '+
           '<button class="btn btn-sm btn-danger" data-action="delete-budget" data-id="'+b.id+'">削除</button>'+
@@ -932,15 +1020,23 @@
     return ''+
     '<div class="card">'+
       '<div class="toolbar">'+
-        '<div><h2 style="margin-bottom:2px;">予算管理</h2><div class="desc" style="margin:0;">費目ごとの予算額と実績額を入力し、差異を自動計算します。</div></div>'+
+        '<div><h2 style="margin-bottom:2px;">予算管理</h2><div class="desc" style="margin:0;">費目ごとの予算額と実績額を入力し、差異を自動計算します。グレーの帯が予算、色付きの帯が実績です。</div></div>'+
         '<button class="btn btn-primary" data-action="add-budget">＋ 費目を追加</button>'+
       '</div>'+
-      (state.budget.length ? '<div class="table-scroll"><table><thead><tr><th>費目</th><th class="num">予算額</th><th class="num">実績額</th><th class="num">差異</th><th></th></tr></thead><tbody>'+rows+
+      (state.budget.length ? '<div class="table-scroll"><table><thead><tr><th>費目</th><th class="num">予算額</th><th class="num">実績額</th><th class="num">差異</th><th>予算 / 実績</th><th></th></tr></thead><tbody>'+rows+
         '<tr><td style="font-weight:700;">合計</td>'+
         '<td class="num" style="font-weight:700;">'+yen(totalBudgeted)+'</td>'+
         '<td class="num" style="font-weight:700;">'+yen(totalActual)+'</td>'+
-        '<td class="num" style="font-weight:700;"><span class="badge '+(totalDiff>0?'badge-danger':'badge-teal')+'">'+(totalDiff>0?'+':'')+yen(totalDiff)+'</span></td><td></td></tr>'+
+        '<td class="num" style="font-weight:700;"><span class="badge '+(totalDiff>0?'badge-danger':'badge-teal')+'">'+(totalDiff>0?'+':'')+yen(totalDiff)+'</span></td><td></td><td></td></tr>'+
         '</tbody></table></div>' : '<div class="empty">予算項目が登録されていません。</div>')+
+    '</div>'+
+
+    '<div class="card">'+
+      '<div class="toolbar"><h2 style="margin-bottom:2px;">CSVから取り込む</h2></div>'+
+      '<div class="field"><label>1列目: 費目、2列目: 予算額、3列目: 実績額、4列目: メモ（任意）／1行目に見出しがあってもOK</label>'+
+        '<input type="file" id="budgetCsvInput" accept=".csv,text/csv">'+
+      '</div>'+
+      '<button class="btn" data-action="import-budget-csv">CSVを取り込む</button>'+
     '</div>';
   }
 
@@ -1126,6 +1222,63 @@
       return;
     }
 
+    if(action==='switch-booth'){
+      selectedBoothId = target.dataset.id;
+      renderTab();
+      return;
+    }
+    if(action==='add-booth'){
+      openModal({ title:'ブースを追加', fields:boothFields(), values:{},
+        onSubmit: async (v)=>{
+          const id = uid();
+          const ok = await runApiAction(async ()=>{ await apiPost('booths','add', {id, ...v}); }, '保存しました');
+          if(ok){ selectedBoothId = id; closeModal(); renderTab(); }
+        } });
+      return;
+    }
+    if(action==='edit-booth'){
+      const b = state.booths.find(x=>x.id===target.dataset.id);
+      openModal({ title:'ブースを編集', fields:boothFields(), values:b,
+        onSubmit: async (v)=>{
+          const ok = await runApiAction(async ()=>{ await apiPost('booths','update', {id:b.id, ...v}); }, '保存しました');
+          if(ok){ closeModal(); renderTab(); }
+        } });
+      return;
+    }
+    if(action==='delete-booth'){
+      if(confirm('このブースを削除しますか？（そのブースのスケジュールは残りますが表示できなくなります）')){
+        await runApiAction(async ()=>{ await apiPost('booths','delete', {id:target.dataset.id}); }, '削除しました');
+        if(selectedBoothId === target.dataset.id) selectedBoothId = null;
+        renderTab();
+      }
+      return;
+    }
+
+    if(action==='add-booth-schedule'){
+      openModal({ title:'ブースのタスクを追加', fields:boothScheduleFields(), values:{status:'未着手', date:todayStr()},
+        onSubmit: async (v)=>{
+          const ok = await runApiAction(async ()=>{ await apiPost('boothSchedule','add', {id:uid(), boothId:selectedBoothId, ...v}); }, '保存しました');
+          if(ok){ closeModal(); renderTab(); }
+        } });
+      return;
+    }
+    if(action==='edit-booth-schedule'){
+      const s = state.boothSchedule.find(x=>x.id===target.dataset.id);
+      openModal({ title:'ブースのタスクを編集', fields:boothScheduleFields(), values:s,
+        onSubmit: async (v)=>{
+          const ok = await runApiAction(async ()=>{ await apiPost('boothSchedule','update', {id:s.id, boothId:s.boothId, ...v}); }, '保存しました');
+          if(ok){ closeModal(); renderTab(); }
+        } });
+      return;
+    }
+    if(action==='delete-booth-schedule'){
+      if(confirm('このタスクを削除しますか？')){
+        await runApiAction(async ()=>{ await apiPost('boothSchedule','delete', {id:target.dataset.id}); }, '削除しました');
+        renderTab();
+      }
+      return;
+    }
+
     if(action==='add-budget'){
       openModal({ title:'費目を追加', fields:budgetFields(), values:{budgeted:0, actual:0},
         onSubmit: async (v)=>{
@@ -1198,6 +1351,25 @@
       renderTab();
       return;
     }
+    if(action==='import-budget-csv'){
+      const fileInput = document.getElementById('budgetCsvInput');
+      const file = fileInput && fileInput.files && fileInput.files[0];
+      if(!file){ alert('CSVファイルを選択してください。'); return; }
+      let items;
+      try{
+        const text = await readCsvFileAsText(file);
+        items = parseBudgetCsvRows(text);
+      }catch(err){
+        console.error('csv read/parse failed', err);
+        alert('CSVの読み込みに失敗しました。\n(' + err.message + ')');
+        return;
+      }
+      if(!items.length){ alert('取り込める行が見つかりませんでした。1列目に費目、2〜3列目に金額が入っているかご確認ください。'); return; }
+      const ok = await runApiAction(async ()=>{ await apiPost('budget','bulkAdd', items); }, items.length + '件取り込みました');
+      if(ok){ fileInput.value = ''; }
+      renderTab();
+      return;
+    }
     if(action==='export-report'){
       try{ exportWordReport(); }
       catch(err){ console.error('report export failed', err); alert('報告書の作成に失敗しました。\n(' + err.message + ')'); }
@@ -1232,6 +1404,25 @@
         if(m) date = m[1];
       }
       items.push({id:uid(), satisfaction:sat, comment:comment, date:date});
+    });
+    return items;
+  }
+
+  function parseBudgetCsvRows(text){
+    const parsed = Papa.parse(text, { skipEmptyLines:true });
+    const items = [];
+    (parsed.data || []).forEach(row=>{
+      if(!row || row.length < 1) return;
+      const category = String(row[0]||'').trim();
+      if(!category) return;
+      const budgetedRaw = row[1]!==undefined ? String(row[1]).trim() : '';
+      const actualRaw = row[2]!==undefined ? String(row[2]).trim() : '';
+      const budgetedNum = Number(budgetedRaw.replace(/[,¥\s]/g,''));
+      const actualNum = Number(actualRaw.replace(/[,¥\s]/g,''));
+      if(budgetedRaw && isNaN(budgetedNum)) return; // looks like a header row, skip
+      if(actualRaw && isNaN(actualNum)) return;
+      const memo = row[3]!==undefined ? String(row[3]).trim() : '';
+      items.push({id:uid(), category, budgeted: budgetedRaw?budgetedNum:0, actual: actualRaw?actualNum:0, memo});
     });
     return items;
   }
